@@ -19,6 +19,9 @@
    	<nav th:replace="fragments :: navbar('pizza')"></nav>
 
  		<div class="container">
+ 			<hr>
+ 			<!-- FORM - aggiungo pulsante per creare nuova pizza -->
+ 				<a class="btn btn-primary" th:href="@{/add}">Crea pizza</a>
  			<!--tabella pizze-->
 
  			<!--stampo la tabella solo se contientìe qualcosa-->
