@@ -27,7 +27,9 @@ public class PizzaController {
 	}
 	
 	@GetMapping("/add")
-	public String creaPizza() {
+	//creo metodo per funzionamento della form, bottone
+	public String creaPizza(Model model) {
+		model.addAttribute("nuovaPizza", new Pizza());
 		return "crea";
 	}
 	

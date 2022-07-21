@@ -10,6 +10,34 @@
    		<nav th:replace="fragments :: navbar('pizza')"></nav>
 			<div class="container">
 				<h1>Crea la tua pizza</h1>
+					<hr/>
+					<!-- gestisce attributo creaPizza che contiene un ogetto pizza vuoto -->
+					<form
+					id="form-creaPizza"
+					th:object="${nuovaPizza}"
+					th:action="@{/salva}" 
+					method="POST"
+					>
+					
+					<!-- aggiungo campi -->
+					<div class="mb-3">
+						<label class="form-label" for="nome">Nome</label>
+  				<input type="text" id="nome" class="form-control" th:field="*{nome}" >
+					</div>
+					
+					<div class="mb - 3">
+						<label class="form-label" for="descrizione">Descrizione</label>
+						<input type="text" id="descrizione" class="form-control" th:field="*{descrizione}">
+					</div>
+					
+					<div class="mb - 3">
+						<label class="form-label" for="prezzo">Prezzo</label>
+						<input type="text" id="prezzo" class="form-control" th:field="*{prezzo}">
+					</div>
+					
+					<button type="submit" class="btn btn-primary mt-3">Crea</button>
+					
+					</form>
 			</div>
  			
  		<th:block th:fragment="risorse-scrips"></th:block>
