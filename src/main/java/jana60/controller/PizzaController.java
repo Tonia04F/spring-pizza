@@ -12,20 +12,23 @@ import jana60.model.Pizza;
 import jana60.repository.PizzaRepository;
 
 @Controller
-@RequestMapping("/pizza")
+@RequestMapping("/")
 public class PizzaController {
 	
 	@Autowired
 	private PizzaRepository repo;
 	
 	
-	@GetMapping 
+	@GetMapping("/pizza") 
 	public String listaPizze(Model model){
 		List<Pizza> lPizza = (List<Pizza>)repo.findAll();
 		model.addAttribute("listaPizze", lPizza);
 		return "pizza";
 	}
 	
-	
+	@GetMapping("/add")
+	public String creaPizza() {
+		return "crea";
+	}
 	
 }

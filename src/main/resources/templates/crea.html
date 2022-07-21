@@ -1,0 +1,17 @@
+ <!doctype html>
+ <html lang="en" xmlns:th="http://www.thymeleaf.org">
+   <head>
+     <th:block th:replace="fragments :: risorse-head"></th:block>
+     <title>Crea la tua pizza</title> 
+   </head>
+
+
+   <body>
+   		<nav th:replace="fragments :: navbar('pizza')"></nav>
+			<div class="container">
+				<h1>Crea la tua pizza</h1>
+			</div>
+ 			
+ 		<th:block th:fragment="risorse-scrips"></th:block>
+  </body>
+ </html>

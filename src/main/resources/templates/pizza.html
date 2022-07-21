@@ -13,18 +13,16 @@
      <th:block th:replace="fragments :: risorse-head"></th:block>
      <title>Le nostre pizze</title> 
    </head>
-
-
    <body>
-   	<nav th:replace="fragments :: navbar('pizza')"></nav>
+    	<nav th:replace="fragments :: navbar('pizza')"></nav>
 
- 		<div class="container">
- 			<hr>
- 			<!-- FORM - aggiungo pulsante per creare nuova pizza -->
- 				<a class="btn btn-primary" th:href="@{/add}">Crea pizza</a>
- 			<!--tabella pizze-->
+  		<div class="container">
+  			<hr>
+  			<!-- FORM - aggiungo pulsante per creare nuova pizza -->
+  				<a class="btn btn-primary" th:href="@{/add}">Crea pizza</a>
+  			<!--tabella pizze-->
 
- 			<!--stampo la tabella solo se contientìe qualcosa-->
+  			<!--stampo la tabella solo se contientìe qualcosa-->
  			<table class ="table" th:if="${listaPizze.size() > 0}">
  			<!-- intestazione tabella-->
  				<thead>
@@ -42,17 +40,12 @@
  						<td th:text="${p.prezzo}"></td>
  					</tr>
  				</tbody>
-
  			</table>
  		</div>	
  		      <!--se la lista è vuota mostro-->
  		    <div class="alert alert-info" th:unless="${listaPizze.size() > 0}" >
  		    	<h3>Ci spiace non ci sono ancora pizze</h3>
  		    </div>  
-
-
-
-
  		<th:block th:fragment="risorse-scrips"></th:block>
   </body>
  </html>
