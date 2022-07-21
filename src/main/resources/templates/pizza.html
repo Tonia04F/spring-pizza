@@ -7,41 +7,49 @@
   </head>
   
   
-  <body>
-  	<nav th:replace="fragments :: navbar('pizza')"></nav>
-  	
-		<div class="container">
-			<!--tabella pizze-->
-			
-			<!--stampo la tabella solo se contientìe qualcosa-->
-			<table class ="table" th:if="${listaPizze.size() > 0}">
-			<!-- intestazione tabella-->
-				<thead>
-					<tr>
-						<th>Nome</th>
-						<th>Descrizione</th>
-						<th>Prezzo</th>
-					</tr>
-				</thead>
-			<!-- corpo tabella-->
-				<tbody>
-					<tr th:each="p : ${listaPizze}">
-						<td th:text="${p.nome}"></td>
-						<td th:text="${p.descrizione}"></td>
-						<td th:text="${p.prezzo}"></td>
-					</tr>
-				</tbody>
-				
-			</table>
-		</div>	
-		      <!--se la lista è vuota mostro-->
-		    <div class="alert alert-info" th:unless="${listaPizze.size() > 0}" >
-		    	<h3>Ci spiace non ci sono ancora pizze</h3>
-		    </div>  
+ <!doctype html>
+ <html lang="en" xmlns:th="http://www.thymeleaf.org">
+   <head>
+     <th:block th:replace="fragments :: risorse-head"></th:block>
+     <title>Le nostre pizze</title> 
+   </head>
 
-		
-		
-		
-		<th:block th:fragment="risorse-scrips"></th:block>
- </body>
-</html>
+
+   <body>
+   	<nav th:replace="fragments :: navbar('pizza')"></nav>
+
+ 		<div class="container">
+ 			<!--tabella pizze-->
+
+ 			<!--stampo la tabella solo se contientìe qualcosa-->
+ 			<table class ="table" th:if="${listaPizze.size() > 0}">
+ 			<!-- intestazione tabella-->
+ 				<thead>
+ 					<tr>
+ 						<th>Nome</th>
+ 						<th>Descrizione</th>
+ 						<th>Prezzo</th>
+ 					</tr>
+ 				</thead>
+ 			<!-- corpo tabella-->
+ 				<tbody>
+ 					<tr th:each="p : ${listaPizze}">
+ 						<td th:text="${p.nome}"></td>
+ 						<td th:text="${p.descrizione}"></td>
+ 						<td th:text="${p.prezzo}"></td>
+ 					</tr>
+ 				</tbody>
+
+ 			</table>
+ 		</div>	
+ 		      <!--se la lista è vuota mostro-->
+ 		    <div class="alert alert-info" th:unless="${listaPizze.size() > 0}" >
+ 		    	<h3>Ci spiace non ci sono ancora pizze</h3>
+ 		    </div>  
+
+
+
+
+ 		<th:block th:fragment="risorse-scrips"></th:block>
+  </body>
+ </html>
