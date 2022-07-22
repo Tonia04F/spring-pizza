@@ -11,30 +11,63 @@
 			<div class="container">
 				<h1>Crea la tua pizza</h1>
 					<hr/>
-					<!-- gestisce attributo creaPizza che contiene un ogetto pizza vuoto -->
+					
+					
+					
+					
+<!-- gestisce attributo creaPizza che contiene un ogetto pizza vuoto -->
 					<form
 					id="form-creaPizza"
 					th:object="${nuovaPizza}"
-					th:action="@{/salva}" 
+					th:action="@{/add}" 
 					method="POST"
 					>
 					
-					<!-- aggiungo campi -->
-					<div class="mb-3">
-						<label class="form-label" for="nome">Nome</label>
+					
+	<!-- gestisco errori -->
+			<ul>
+		      <li 
+		         th:each="err : ${#fields.allErrors()}" 
+		         th:text="${err}">
+		      </li>
+			</ul>
+			
+			
+<!-- aggiungo campi -->
+			<div class="mb-3">
+				<label class="form-label" for="nome">Nome</label>
   				<input type="text" id="nome" class="form-control" th:field="*{nome}" th:errorClass="is-invalid" >
-					</div>
-					
-					<div class="mb - 3">
+<!-- gestisco errore nell'inserimento della descrizione-->
+				<div th:if="${#fields.hasErrors('nome')}" class="invalid-feedback">
+  					<ul>
+  						<li th:each="err : ${#fields.errors('nome')}" th:text="${err}">
+  					</ul>
+  				</div>
+			</div>
+			
+			
+			
+				<div class="mb - 3">
 						<label class="form-label" for="descrizione">Descrizione</label>
-						<input type="text" id="descrizione" class="form-control" th:field="*{descrizione}">
-					</div>
+						<input type="text" id="descrizione" class="form-control" th:field="*{descrizione}" th:errorClass="is-invalid">
+<!-- gestisco errore nell'inserimento della descrizione-->
+					<div th:if="${#fields.hasErrors('descrizione')}" class="invalid-feedback">
+	  					<ul>
+	  						<li th:each="err : ${#fields.errors('descrizione')}" th:text="${err}">
+	  					</ul>
+  					</div>
+  					
+				</div>
 					
+<!-- non ho aggiunto errori al parametro prezzo-->
 					<div class="mb - 3">
 						<label class="form-label" for="prezzo">Prezzo</label>
 						<input type="text" id="prezzo" class="form-control" th:field="*{prezzo}">
 					</div>
 					
+					
+					
+<!-- bottone per andare alla pagina per creare nuova pizza -->
 					<button type="submit" class="btn btn-primary mt-3">Crea</button>
 					
 					</form>
@@ -43,3 +76,19 @@
  		<th:block th:fragment="risorse-scrips"></th:block>
   </body>
  </html>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

@@ -40,16 +40,46 @@ public class PizzaController {
 		return "crea";
 	}
 	
+	/*
+	 * con questo controllo il tasto crea, crea e salva effettivamente la pizza, uso quindi
+	 * @modelattrib nuovaPizza che è l'attributo che ho passato ad html pizza per creare la lista di pizze
+	 * Pizza che è il model Pizza che ha gli attributi ancora vuoti 
+	 * @valid fa in modo che se l utente inserisce i campi in modo errato(@notEmpty nel model per esempio) non si spacchi il programma ma gestisce l errore.
+	 *binddingresult che è la mappa in cui finiscono gli eventuali errori nell'inserimento dei dati, li legge con i suoi metodi e ritorna un true o false
+	 *se non sisono errori la nuova pizza viene salvata nel formPizza, tramite metodo del repository
+	 * 
+	 * redirect/ fa vedere il libro nel controller /pizza cioe nell html dove si vede la lista di pizze
+	 */
 	  @PostMapping("/add")
-	  public String salva(@Valid @ModelAttribute("creaPizza") Pizza formPizza, BindingResult br) {
+	  public String salva(@Valid @ModelAttribute("nuovaPizza") Pizza formPizza, BindingResult br) {
 	    // testo se ci sono errori di validazione
 	    if (br.hasErrors()) {
-	      // se ci sono errori non salvo il book su database ma ritorno alla form precaricata
+	      // se ci sono errori non salvo la pizza su database ma ritorno alla form precaricata
 	      return "crea";
 	    } else {
-	      // se non ci sono errori salvo il book che arriva dalla form
+	      // se non ci sono errori salvo la pizza che arriva dalla form
 	      repo.save(formPizza);
-	      return "redirect:/"; // non cercare un template, ma fai la HTTP redirect a quel path
-	    }
+	       // non cercare un template, ma fai la HTTP redirect a quel path
+	    }return "redirect:/";
 	  }
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 }

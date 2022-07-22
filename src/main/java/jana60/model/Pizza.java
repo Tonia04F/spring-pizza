@@ -1,10 +1,12 @@
 package jana60.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "pizza")
@@ -14,7 +16,12 @@ public class Pizza {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	
+	@NotEmpty(message = "il nome è obbligatorio")
+	@Column(nullable = false)
 	private String nome;
+	@NotEmpty(message = "Per creare una pizza è necessario aggiungere una descrizione di come la vorresti.")
+	@Column(nullable = false)
 	private String descrizione;
 	private Float prezzo;
 	
