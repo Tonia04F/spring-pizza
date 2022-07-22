@@ -60,7 +60,7 @@ public class PizzaController {
 	      // se non ci sono errori salvo la pizza che arriva dalla form
 	      repo.save(formPizza);
 	       // non cercare un template, ma fai la HTTP redirect a quel path
-	    }return "redirect:/";
+	    }return "redirect:/pizza";
 	  }
 	  
 	  
