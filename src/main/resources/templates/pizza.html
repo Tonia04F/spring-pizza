@@ -1,11 +1,4 @@
 
-<!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <th:block th:replace="fragments :: risorse-head"></th:block>
-    <title>Le nostre pizze</title> 
-  </head>
-  
   
  <!doctype html>
  <html lang="en" xmlns:th="http://www.thymeleaf.org">
@@ -18,31 +11,39 @@
 
   		<div class="container">
   			<hr>
-  			<!-- FORM - aggiungo pulsante per creare nuova pizza -->
+  		<!-- FORM - aggiungo pulsante per creare nuova pizza -->
   				<a class="btn btn-primary" th:href="@{/add}">Crea pizza</a>
-  			<!--tabella pizze-->
+  		<!--tabella pizze-->
 
-  			<!--stampo la tabella solo se contientìe qualcosa-->
+  		<!--stampo la tabella solo se contientìe qualcosa-->
  			<table class ="table" th:if="${listaPizze.size() > 0}">
- 			<!-- intestazione tabella-->
+ 		<!-- intestazione tabella-->
  				<thead>
  					<tr>
  						<th>Nome</th>
  						<th>Descrizione</th>
  						<th>Prezzo</th>
+ 						<!--aggiungo th per frontawesom-->
+ 						<th>Action</th>
  					</tr>
  				</thead>
- 			<!-- corpo tabella-->
+ 		<!-- corpo tabella-->
  				<tbody>
  					<tr th:each="p : ${listaPizze}">
  						<td th:text="${p.nome}"></td>
  						<td th:text="${p.descrizione}"></td>
  						<td th:text="${p.prezzo}"></td>
+ 						
+ 		<!--ancora che porta al metodo delete-->
+ 					<td>
+ 					 	<a class="btn btn-primary" th:href="@{|/delete/${p.id}|}">Delete</a>
+					</td>
+ 						
  					</tr>
  				</tbody>
  			</table>
  		</div>	
- 		      <!--se la lista è vuota mostro-->
+ 		 <!--se la lista è vuota mostro-->
  		    <div class="alert alert-info" th:unless="${listaPizze.size() > 0}" >
  		    	<h3>Ci spiace non ci sono ancora pizze</h3>
  		    </div>  
