@@ -1,10 +1,12 @@
 package jana60.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.server.ResponseStatusException;
 
 import jana60.model.Pizza;
 import jana60.repository.PizzaRepository;
@@ -75,6 +78,21 @@ public class PizzaController {
 		  
 	  }
 	  
+	  //creo form per modificare pizza esistente
+	  @GetMapping("/edit/{id}")
+	  public String edit(@PathVariable("id") Integer pizzaId, Model model) {
+  	    Optional<Pizza> result = repo.findById(pizzaId);
+  	    // controllo se il Book con quell'id è presente
+  	    if (result.isPresent()) {
+  	      // preparo il template con al form passandogli il book trovato su db
+
+  	      model.addAttribute("pizza", result.get());
+  	      return "/edit";
+  	    }else{
+  	      throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+    	          "Pizza con id " + pizzaId + " not present");
+    	    }
+	  }
 	  
 	  
 	  
@@ -91,4 +109,6 @@ public class PizzaController {
 	  
 	  
 	  
-}
+	  
+}  
+	  

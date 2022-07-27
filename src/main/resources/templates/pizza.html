@@ -8,7 +8,7 @@
    </head>
    <body>
     	<nav th:replace="fragments :: navbar('pizza')"></nav>
-
+	           <h2>Le nostre pizze</h2>
   		<div class="container">
   			<hr>
   		<!-- FORM - aggiungo pulsante per creare nuova pizza -->
@@ -36,7 +36,13 @@
  						
  		<!--ancora che porta al metodo delete-->
  					<td>
- 					 	<a class="btn btn-primary" th:href="@{|/delete/${p.id}|}">Delete</a>
+ 					 	<a class="btn btn-primary" th:href="@{|/delete/${p.id}|}" onclick="return confirm('Conferma')"><i class="fa-solid fa-trash"></i></a>
+
+					</td>
+		<!--metodo per modificare-->			
+					<td>
+					 	<a class="btn btn-primary" th:href="@{|/edit/${p.id}|}" onclick="return confirm('Conferma')"><i class="fa-solid fa-pen"></i></a>
+
 					</td>
  						
  					</tr>
