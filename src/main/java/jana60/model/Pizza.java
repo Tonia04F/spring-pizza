@@ -1,10 +1,13 @@
 package jana60.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -24,6 +27,11 @@ public class Pizza {
 	@Column(nullable = false)
 	private String descrizione;
 	private Float prezzo;
+	
+	
+	//ogni pizza vede n ingredienti
+	 @ManyToMany
+	  private List<Ingrediente> ingredienti;
 	
 	
 	public Integer getId() {

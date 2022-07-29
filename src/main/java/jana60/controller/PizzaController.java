@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.server.ResponseStatusException;
 
+import jana60.model.Ingrediente;
 import jana60.model.Pizza;
+import jana60.repository.IngredienteRepository;
 import jana60.repository.PizzaRepository;
 
 @Controller
@@ -26,6 +28,7 @@ public class PizzaController {
 	
 	@Autowired
 	private PizzaRepository repo;
+	
 	
 	
 	@GetMapping("/pizza") 
@@ -41,6 +44,8 @@ public class PizzaController {
 	//creo metodo per funzionamento della form, bottone
 	public String creaPizza(Model model) {
 		model.addAttribute("nuovaPizza", new Pizza());
+		//x aggiungere ingredienti nella form crea nuova pizza
+		model.addAttribute("Ilist", new Ingrediente()); 
 		return "crea";
 	}
 	
@@ -95,12 +100,7 @@ public class PizzaController {
 	  }
 	  
 	  
-	  
-	  
-	  
-	  
-	  
-	  
+	
 	  
 	  
 	  
